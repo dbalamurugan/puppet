@@ -42,22 +42,16 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class bala {    
+class bala :: install{    
     $pack_name = $facts['os']['family'] ?{
         'RedHat' => 'httpd',
-        'Dedbian' => 'apache2'
+        'debian' => 'apache2'
     }
 package { $pack_name:
     ensure => installed,
     
 }
-service { $pack_name:
-    ensure     => running,
-    enable     => true,
-    hasrestart => true,
-    hasstatus  => true,
-    # pattern    => $pack_name,
-}
+
 }
 
 
